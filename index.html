@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Love Letter Flip</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #f6f1e7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Georgia', serif;
+    }
+    .flip-container {
+      perspective: 1000px;
+    }
+    .flipper {
+      position: relative;
+      width: 300px;
+      height: 400px;
+      transition: 0.8s;
+      transform-style: preserve-3d;
+      cursor: pointer;
+    }
+    .flip-container.open .flipper {
+      transform: rotateY(180deg);
+    }
+    .front, .back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+    .front {
+      background-image: url('envelope.png');
+      background-size: cover;
+    }
+    .back {
+      background-image: url('parchment.png');
+      background-size: cover;
+      transform: rotateY(180deg);
+    }
+  </style>
+</head>
+<body>
+  <div class="flip-container" onclick="this.classList.toggle('open')">
+    <div class="flipper">
+      <div class="front"></div>
+      <div class="back"></div>
+    </div>
+  </div>
+</body>
+</html>
